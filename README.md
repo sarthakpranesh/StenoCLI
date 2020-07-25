@@ -1,0 +1,2 @@
+# StenoCLI
+Stenography CLI tool

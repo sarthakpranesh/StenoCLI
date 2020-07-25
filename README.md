@@ -1,2 +1,2 @@
 # StenoCLI
-Stenography CLI tool
+Steganography CLI tool

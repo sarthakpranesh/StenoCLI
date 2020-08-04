@@ -1,7 +1,9 @@
 from __future__ import print_function, unicode_literals
 from PyInquirer import prompt
 from pprint import pprint
-import os
+
+import photoStegano
+import textStegano
 
 print("\tWelcome to StenoCLI\n")
 
@@ -53,7 +55,9 @@ command = answers['command'][0]
 
 if command == 'Photo-steganography':
     print('\tPhoto steganography\n')
+    photoStegano.photoSteganography(name)
 elif command == 'Text-steganography':
     print('Text steganography Ready')
+    textStegano.textSteganography(name)
 else:
     print('Exiting Program')

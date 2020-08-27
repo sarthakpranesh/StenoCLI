@@ -5,30 +5,11 @@ from pprint import pprint
 import photoStegano
 import textStegano
 
-print("\tWelcome to StenoCLI\n")
-
-questions = [
-    {
-        'type': 'input',
-        'name': 'name',
-        'message': 'What is your name?',
-    }
-]
-
-while(True):
-    answers = prompt(questions)
-    if (len(answers['name']) != 0):
-        print("Hello ", answers['name'], "! ")
-        break
-    print("Please input your name!")
-
-name = answers['name']
-
 questions = [
     {
         'type': 'checkbox',
         'qmark': '🤔',
-        'message': 'What do you wanna do ' + name + "?",
+        'message': 'What do you wanna do ?',
         'name': 'command',
         'choices': [
             {
@@ -54,10 +35,8 @@ while (True):
 command = answers['command'][0]
 
 if command == 'Photo-steganography':
-    print('\tPhoto steganography\n')
-    photoStegano.photoSteganography(name)
+    photoStegano.photoSteganography()
 elif command == 'Text-steganography':
-    print('Text steganography Ready')
-    textStegano.textSteganography(name)
+    textStegano.textSteganography()
 else:
     print('Exiting Program')

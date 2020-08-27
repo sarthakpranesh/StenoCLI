@@ -2,12 +2,12 @@ from __future__ import print_function, unicode_literals
 from PyInquirer import prompt
 from pprint import pprint
 
-def photoSteganography(name):
+def photoSteganography():
     questions = [
         {
             'type': 'checkbox',
             'qmark': '🤔',
-            'message': 'What operation would you like to perform on Image ' + name + ' ?',
+            'message': 'What operation would you like to perform on Image?',
             'name': 'command',
             'choices': [
                 {

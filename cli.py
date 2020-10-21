@@ -25,18 +25,20 @@ questions = [
     }
 ]
 
-while (True):
-    answers = prompt(questions)
-    if(len(answers['command']) != 0):
-        print('Ready to perform ', answers['command'][0])
-        break
-    print("Please select at least one option!")
+def StartCLI():
+    while (True):
+        answers = prompt(questions)
+        if(len(answers['command']) != 0):
+            print('Ready to perform ', answers['command'][0])
+            break
+        print("Please select at least one option!")
 
-command = answers['command'][0]
+    command = answers['command'][0]
 
-if command == 'Photo-steganography':
-    photoStegano.photoSteganography()
-elif command == 'Text-steganography':
-    textStegano.textSteganography()
-else:
-    print('Exiting Program')
+    if command == 'Photo-steganography':
+        photoStegano.photoSteganography()
+    elif command == 'Text-steganography':
+        textStegano.textSteganography()
+    else:
+        print('Exiting Program')
+        

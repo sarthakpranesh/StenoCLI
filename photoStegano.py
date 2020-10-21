@@ -17,9 +17,6 @@ def photoSteganography():
                 {
                     'name': 'Decode'
                 },
-                {
-                    'name': 'Back'
-                },
             ],
         }
     ]
@@ -37,7 +34,7 @@ def photoSteganography():
     elif command == 'Decode':
         ImageDecode()
     else:
-        print("Will go back")
+        print("Wrong option")
 
 def ImageEncode():
     questions = [
@@ -56,7 +53,7 @@ def ImageEncode():
         {
             'type': 'input',
             'qmark': '🥱',
-            'message': 'Enter resultant file name (with extention):',
+            'message': 'Enter resultant file name (with extention .png):',
             'name': 'encodedFile'
         }
     ]

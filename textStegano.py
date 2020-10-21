@@ -36,6 +36,8 @@ def textSteganography():
         textEncoding()
     elif (command == "Decode"):
         textDecoding()
+    else:
+        print("Wrong option")
 
 
 def textEncoding():
@@ -55,7 +57,7 @@ def textEncoding():
         {
             'type': 'input',
             'qmark': '🥱',
-            'message': 'Enter encoded file name (with extention):',
+            'message': 'Enter encoded file name (with extention .png):',
             'name': 'encodedFile'
         }
     ]

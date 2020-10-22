@@ -16,7 +16,7 @@ with open(path.join(HERE, 'requirements.txt'), encoding='utf-8') as f:
 
 setuptools.setup(
     name="stenocli", # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="Sarthak Pranesh",
     author_email="limphned@gmail.com",
     description="Perform Image and Text Steganography from your terminal!",

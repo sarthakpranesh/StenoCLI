@@ -2,8 +2,8 @@ from __future__ import print_function, unicode_literals
 from PyInquirer import prompt
 from pprint import pprint
 
-import photoStegano
-import textStegano
+from StenoCLI.Image import photoSteganography
+from StenoCLI.Text import textSteganography
 
 questions = [
     {
@@ -25,7 +25,7 @@ questions = [
     }
 ]
 
-def StartCLI():
+def main():
     while (True):
         answers = prompt(questions)
         if(len(answers['command']) != 0):
@@ -36,9 +36,12 @@ def StartCLI():
     command = answers['command'][0]
 
     if command == 'Photo-steganography':
-        photoStegano.photoSteganography()
+        photoSteganography()
     elif command == 'Text-steganography':
-        textStegano.textSteganography()
+        textSteganography()
     else:
         print('Exiting Program')
+
+if __name__ == "__main__":
+    main()
         

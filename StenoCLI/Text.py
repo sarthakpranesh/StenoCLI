@@ -17,9 +17,6 @@ def textSteganography():
                 {
                     'name': 'Decode'
                 },
-                {
-                    'name': 'Back'
-                },
             ],
         }
     ]

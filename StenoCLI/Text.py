@@ -3,6 +3,8 @@ from PyInquirer import prompt
 from pprint import pprint
 from PIL import Image
 
+from StenoCLI.helpers import askAndLoadImage
+
 def textSteganography():
     questions = [
         {

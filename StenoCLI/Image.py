@@ -3,6 +3,8 @@ from PyInquirer import prompt
 from pprint import pprint
 from PIL import Image
 
+from StenoCLI.helpers import askAndLoadImage
+
 def photoSteganography():
     questions = [
         {
@@ -37,55 +39,18 @@ def photoSteganography():
         print("Wrong option")
 
 def ImageEncode():
-    q1 = [
-        {
-            'type': 'input',
-            'qmark': '😎',
-            'message': 'Enter name of file to be used as cover image (with extention):',
-            'name': 'coverImage',
-        },
-    ]
+    img1 = askAndLoadImage('😎', 'Enter name of file to be used as cover image (with extention):')
+    img2 = askAndLoadImage('🧐', 'Enter name of file to hide in cover image (with extention):');
 
-    while True:
-        answers = prompt(q1)
-        if len(answers['coverImage']) != 0:
-            try:
-                img1 = Image.open(answers['coverImage'], 'r')
-                break
-            except FileNotFoundError:
-                print('File not found:', answers['coverImage'])
-        print('Try Again')
-
-    q2 = [
-        {
-            'type': 'input',
-            'qmark': '🧐',
-            'message': 'Enter name of file to hide in cover image (with extention):',
-            'name': 'secretImage',
-        },
-    ]
-
-    while True:
-        answers = prompt(q2)
-        if len(answers['secretImage']) != 0:
-            try:
-                img2 = Image.open(answers['secretImage'], 'r')
-                break
-            except FileNotFoundError:
-                print('File not found:', answers['secretImage'])
-        print('Try Again')
-
-    q3 = [
+    q = [
         {
             'type': 'input',
             'qmark': '🥱',
-            'message': 'Enter resultant file name (with extention .png):',
+            'message': 'Enter resultant file name (without extention, .png will be used):',
             'name': 'encodedFile'
         },
     ]
-
-    answers = prompt(q3)
-
+    answers = prompt(q)
     encodedFile = answers['encodedFile']
 
     try:
@@ -94,8 +59,7 @@ def ImageEncode():
         print('Not encoding because user tried to hide higher resolution image in lower resolution image')
         return
     
-    enArr = encodedFile.split(".")
-    resultImage.save(encodedFile, str(enArr[-1].upper()))
+    resultImage.save(encodedFile+".png", "PNG")
 
 def ImageDecode():
     questions = [
@@ -116,7 +80,6 @@ def ImageDecode():
     img1 = Image.open(coverImage, 'r')
     hiddenImage = unmerge(img1)
     hiddenImage.save("hiddenImage.png", "PNG")
-
 
 def mergeRGB(rgb1, rgb2):
         r1, g1, b1 = rgb1

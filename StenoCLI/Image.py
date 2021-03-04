@@ -37,43 +37,65 @@ def photoSteganography():
         print("Wrong option")
 
 def ImageEncode():
-    questions = [
+    q1 = [
         {
             'type': 'input',
             'qmark': '😎',
             'message': 'Enter name of file to be used as cover image (with extention):',
             'name': 'coverImage',
         },
+    ]
+
+    while True:
+        answers = prompt(q1)
+        if len(answers['coverImage']) != 0:
+            try:
+                img1 = Image.open(answers['coverImage'], 'r')
+                break
+            except FileNotFoundError:
+                print('File not found:', answers['coverImage'])
+        print('Try Again')
+
+    q2 = [
         {
             'type': 'input',
             'qmark': '🧐',
             'message': 'Enter name of file to hide in cover image (with extention):',
             'name': 'secretImage',
         },
+    ]
+
+    while True:
+        answers = prompt(q2)
+        if len(answers['secretImage']) != 0:
+            try:
+                img2 = Image.open(answers['secretImage'], 'r')
+                break
+            except FileNotFoundError:
+                print('File not found:', answers['secretImage'])
+        print('Try Again')
+
+    q3 = [
         {
             'type': 'input',
             'qmark': '🥱',
             'message': 'Enter resultant file name (with extention .png):',
             'name': 'encodedFile'
-        }
+        },
     ]
 
-    while (True):
-        answers = prompt(questions)
-        if (len(answers['coverImage']) != 0 and len(answers['secretImage']) != 0 and len(answers['encodedFile']) != 0):
-            break
-        print('Please select an options!')
+    answers = prompt(q3)
 
-    coverImage = answers['coverImage']
-    secretImage = answers['secretImage']
     encodedFile = answers['encodedFile']
 
-    img1 = Image.open(coverImage, 'r')
-    img2 = Image.open(secretImage, 'r')
-
-    resultImage = merge(img1, img2)
-
-    resultImage.save(encodedFile, str(encodedFile.split(".")[1].upper()))
+    try:
+        resultImage = merge(img1, img2)
+    except ValueError:
+        print('Not encoding because user tried to hide higher resolution image in lower resolution image')
+        return
+    
+    enArr = encodedFile.split(".")
+    resultImage.save(encodedFile, str(enArr[-1].upper()))
 
 def ImageDecode():
     questions = [

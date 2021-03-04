@@ -39,8 +39,6 @@ def main():
         photoSteganography()
     elif command == 'Text-steganography':
         textSteganography()
-    else:
-        print('Exiting Program')
 
 if __name__ == "__main__":
     main()
